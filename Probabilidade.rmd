@@ -1,0 +1,47 @@
+---
+title: "Curso GEPEMA 2019"
+author: "Germano Costa Neto, Luís Alberto S. Antolin"
+date: "11 de outubro de 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+layouts[http://www.datadreaming.org/post/r-markdown-theme-gallery/]
+
+#**1. Distribuições de Probabilidade**
+
+## 1.1 Introdução
+
+Toda **variável aleatória** (sendo um fenômeno biológico ou não) que ocorre no mundo pode ser representada matematicamente como uma distribuição de ocorrências. 
+
+- Por exemplo, distribuiçao de ocorrências de chuvas. 
+
+Primeiro precisamos pensar: o que é chuva? É a quantidade de água precipitada do céu num dado momento. Se computarmos a quantidade de água precipitada por intervalo de tempo (ex: 1 min, 1h), temos a ocorrencia de determinada quantidade de água ao longo do tempo. 
+
+Como a quantidade de chuva é uma variável **quantitativa contínua**, e esta quantidade está compreendida entre $-\infty$ e $+\infty$, precisamos criar uma função que se adeque ao nosso **espaço paramétrico** e que seja embasada na ciência que temos sobre o fenomeno. 
+
+- Por exemplo, sabemos que não chove *700mm em 1 minuto* em nenhum lugar do planeta Terra, assim como sabemos que não chove -600mm, pois o mínimo que se pode chover é 0mm (ou seja, não chover).
+
+Mas e se o fenomeno fosse 'deficiência hídrica por falta de chuva'? ai nosso espaço paramétrico poderia compreender valore negativos, mas do mesmo modo, saberiamos que extremos absurdos são pouco prováveis.
+
+Pensando em altura de humanos: a chance de observar humanos muito altos (maiores do que 2,10 m) e muito baixos (menos do que 1,30 m) é muito pequena (apesar de existirem!).
+Essa chance de ocorrência aumenta quando nos distanciamos de 1,30m (1,40m, 1,50m) e de 2,10 (2,00m, 1,90m).
+
+Portanto, o ponto chave para entender probabilidade é: saber enxergar fenômenos.
+
+## 1.2 Conceito
+
+São funções que definem uma curva na qual probabilidade de ocorrência de um dado evento pode ser computada pela área sob essa curva.
+
+Toda curva é modelada por uma função e toda função é definida por parâmetros.
+
+Temos dois parametros principais: dispersão da curva (ou seja, como ela se estende) e seu intercepto (ou parametro de tendencia central).
+
+Como no mundo real é complexo modelar particularmente cada fenomeno, adotamos funções de densidade e probabilidade (as vulgo FDP) já estabelecidas cujas propriedades matemáticas são oriundas de derivações (para obter seus *momentos*) e integrações (para obter estimativas de áreas, isto é, probabilidades).
+
+## 1.3 Principais distribuições
+
+http://www.r-tutor.com/elementary-statistics/probability-distributions
