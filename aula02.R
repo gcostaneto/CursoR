@@ -13,7 +13,7 @@ require(ggplot2)
 require(ggpubr)
 
 # chamando pacotes (pro mode)
-pkg =c("plyr","reshape2","ggplot2","ggpubr")
+pkg = c("plyr","reshape2","ggplot2","ggpubr")
 
 # criando
 inst.package <- function(pkg){
@@ -130,8 +130,12 @@ ddply(data, .(MES), summarise, SRADmean = round(mean(SRAD),2));
 
 # usando o primo pobre
 tapply(X = data$SRAD,INDEX = data$MES,FUN = mean);
+
+# lidando com vetores
+data$SRAD[data$SRAD > 20]
+data$SRAD[data$SRAD > 30]
 #'----------------------------------------------------------------------------------------
-# 2.6 Criando seu proprio summary  (exercicio)                                        ----
+# 2.6 Criando seu proprio summary  via plyr usando aas funcoes (exercicio)                                        ----
 sd()        # desvio padrao
 median()    # mediana
 quantile()  # quantis
@@ -148,6 +152,32 @@ var()       # variancia
 # http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html
 # https://beanumber.github.io/sds192/lab-ggplot2.html
 # https://tutorials.iq.harvard.edu/R/Rgraphics/Rgraphics.html
-
+# http://www.sthda.com/english/wiki/ggplot2-barplots-quick-start-guide-r-software-and-data-visualization
 # Estrutura: ggplot() + geom_algumacoisa() + theme()
+
+# 3.1 Descritores de distribuicao de frequencias
+
+ggplot(data, aes(x=ANO,y=SRAD))+geom_boxplot()
+
+data$ANO = as.factor(data$ANO)
+
+ggplot(data, aes(x=ANO,y=SRAD))+geom_boxplot()
+
+ggplot(data, aes(x=ANO,y=SRAD,fill=MES))+geom_boxplot()
+ggplot(data, aes(x=MES,y=SRAD,fill=ANO))+geom_boxplot()
+
+
+ggplot(data, aes(x=ANO,y=SRAD,fill=ANO))+geom_boxplot()+facet_grid(~MES)
+ggplot(data, aes(x=ANO,y=SRAD,fill=MES))+geom_boxplot()+facet_wrap(~MES)
+
+ggplot(data, aes(x=ANO,y=SRAD))+ geom_violin()
+ggplot(data, aes(x=ANO,y=SRAD))+ geom_bar(stat="identity")
+ggplot(data, aes(x=ANO,y=SRAD,fill=MES))+geom_bar(stat="identity", position=position_dodge());
+ggplot(data, aes(x=ANO,y=SRAD,fill=ANO))+ geom_bar(stat="identity");
+ggplot(data, aes(x=ANO,y=SRAD,fill=MES))+ geom_bar(stat="identity",position = "fill");
+ggplot(data, aes(x=ANO,y=SRAD,fill=MES))+ geom_bar(stat="identity",position = "fill");
+
+#'----------------------------------------------------------------------------------------
+# Parte 4: reshape2: derretendo planilhas  (adicional) -----
+#'----------------------------------------------------------------------------------------
 
